@@ -70,16 +70,21 @@ export default function ActScene({
           </h2>
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 list-none p-0 m-0">
             {scene.choices.map((choice) => (
-              <li key={choice.value}>
+              <li key={choice.value} className="min-w-0">
                 <Button
                   onClick={() => onChoice(choice.value)}
                   disabled={loading}
                   variant="outline"
-                  className="w-full h-auto min-h-[5rem] py-6 px-4 text-left hover:bg-blue-50 hover:border-blue-400 border-2 transition-all"
+                  className="flex h-auto min-h-[5rem] w-full min-w-0 flex-col items-stretch justify-start gap-2 whitespace-normal py-6 px-4 text-left hover:bg-blue-50 hover:border-blue-400 border-2 transition-all"
                   aria-describedby={`hint-${choice.value}`}
                 >
-                  <span className="font-bold text-base text-gray-800 block">{choice.label}</span>
-                  <span id={`hint-${choice.value}`} className="text-xs text-gray-600 block mt-2">
+                  <span className="block w-full break-words font-bold text-base text-gray-800 leading-snug">
+                    {choice.label}
+                  </span>
+                  <span
+                    id={`hint-${choice.value}`}
+                    className="block w-full break-words text-xs text-gray-600 leading-relaxed"
+                  >
                     {choice.hint}
                   </span>
                 </Button>
